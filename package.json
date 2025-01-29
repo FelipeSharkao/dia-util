@@ -2,13 +2,12 @@
   "name": "@FelipeSharkao/dia-util",
   "version": "1.0.0",
   "description": "Hoje é um dia útil? Qual é o próximo dia útil? Pequena lógica para determinar o próximo (ou se hoje é) dia útil considerando fériados nacionais (móveis ou não).",
-  "main": "src/index.js",
-  "directories": {
-    "test": "test"
-  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.mjs",
   "scripts": {
-    "test": "mocha test/*.spec.js",
-    "autotest": "./node_modules/.bin/supervisor -q -n exit -x npm test"
+    "build": "bun build.ts",
+    "dev": "bun test --watch",
+    "test": "bun test"
   },
   "repository": {
     "type": "git",
@@ -37,15 +36,8 @@
   },
   "homepage": "https://github.com/FelipeSharkao/dia-util#readme",
   "devDependencies": {
-    "chai": "^4.1.2",
-    "eslint-config-standard": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^9.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "mocha": "^3.5.0",
-    "supervisor": "^0.12.0"
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/bun": "latest",
     "@types/moment": "^2.13.0",
     "eslint": "^9.19.0",
     "prettier": "^3.4.2"

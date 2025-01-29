@@ -1,41 +1,38 @@
-const moment = require('moment')
-const { isNationalHoliday } = require('./getNationalHolidays')
-const { isStateHoliday } = require('./getStateHolidays')
+import moment, { type Moment } from "moment"
 
-const ehDiaUtil = (date, stateCode) => {
-  const givenDate = moment(date)
-  if (!givenDate.isValid()) {
-    return false
-  }
+import { isNationalHoliday } from "@/getNationalHolidays"
+import { isStateHoliday } from "@/getStateHolidays"
 
-  if (ehFinalDeSemana(givenDate)) {
-    return false
-  }
+export function ehDiaUtil(date: Date | string, uf?: string) {
+    const givenDate = moment(date)
+    if (!givenDate.isValid()) {
+        return false
+    }
 
-  if (ehFeriado(date, stateCode)) {
-    return false
-  }
+    if (ehFinalDeSemana(givenDate)) {
+        return false
+    }
 
-  return true
-}
+    if (ehFeriado(date, uf)) {
+        return false
+    }
 
-const ehFinalDeSemana = (givenDate) => {
-  const dayOfWeek = givenDate.day()
-  const isWeekend = (dayOfWeek === 6 || dayOfWeek === 0)
-  return isWeekend
-}
-
-const ehFeriado = (date, stateCode) => {
-  const givenDate = moment(date)
-  if (!givenDate.isValid()) {
-    return false
-  }
-  if (isNationalHoliday(givenDate) || isStateHoliday(givenDate, stateCode)) {
     return true
-  }
-  return false
 }
 
-module.exports = ehDiaUtil
-module.exports.ehFeriado = ehFeriado
-module.exports.ehFinalDeSemana = ehFinalDeSemana
+export function ehFinalDeSemana(givenDate: Moment) {
+    const dayOfWeek = givenDate.day()
+    const isWeekend = dayOfWeek === 6 || dayOfWeek === 0
+    return isWeekend
+}
+
+export function ehFeriado(date: Date | string, uf?: string) {
+    const givenDate = moment(date)
+    if (!givenDate.isValid()) {
+        return false
+    }
+    if (isNationalHoliday(givenDate) || isStateHoliday(givenDate, uf)) {
+        return true
+    }
+    return false
+}
