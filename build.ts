@@ -1,14 +1,17 @@
-import type { BuildConfig } from "bun"
+import type { BuildConfig, BunPlugin } from "bun"
+import dts from "bun-plugin-dts"
 
 const config: Omit<BuildConfig, "outdir" | "target" | "format"> = {
     entrypoints: ["./src/index.ts"],
-    sourcemap: "linked",
-    external: ["*"],
+    minify: true,
+    packages: "external",
+    plugins: [resolveAliasesPlugin()],
 }
 Bun.build({
     ...config,
-    outdir: "dist/esm",
+    outdir: "dist",
     format: "esm",
+    plugins: [...(config.plugins ?? []), dts()],
 })
 Bun.build({
     ...config,
@@ -16,3 +19,16 @@ Bun.build({
     target: "node",
     format: "cjs",
 })
+
+function resolveAliasesPlugin(): BunPlugin {
+    return {
+        name: "Resolve Aliases",
+        setup(build) {
+            build.onResolve({ filter: /.*/ }, (args) => {
+                if (args.path.startsWith("@/")) {
+                    return { path: `${import.meta.dir}/src/${args.path.slice(2)}.ts` }
+                }
+            })
+        },
+    }
+}

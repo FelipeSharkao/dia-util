@@ -1,51 +1,49 @@
 {
-  "name": "@FelipeSharkao/dia-util",
-  "version": "1.0.0",
-  "description": "Hoje é um dia útil? Qual é o próximo dia útil? Pequena lógica para determinar o próximo (ou se hoje é) dia útil considerando fériados nacionais (móveis ou não).",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.mjs",
-  "scripts": {
-    "build": "bun build.ts",
-    "dev": "bun test --watch",
-    "test": "bun test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FelipeSharkao/dia-util.git"
-  },
-  "keywords": [
-    "feriados",
-    "brasil",
-    "brazil",
-    "holidays",
-    "business",
-    "day",
-    "working-day",
-    "business-day",
-    "feriado",
-    "dia-útil"
-  ],
-  "contributors": [
-    "Luiz Freneda <lfreneda@gmail.com> (http://www.freneda.com.br/)",
-    "Victor Reinor <victorreinor@gmail.com>",
-    "Felipe Nascimento <felipenasgomes@gmail.com>"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/FelipeSharkao/dia-util/issues"
-  },
-  "homepage": "https://github.com/FelipeSharkao/dia-util#readme",
-  "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
-    "@types/bun": "latest",
-    "@types/moment": "^2.13.0",
-    "eslint": "^9.19.0",
-    "prettier": "^3.4.2"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
-  "dependencies": {
-    "moment": "^2.30.1"
-  }
+    "name": "@FelipeSharkao/dia-util",
+    "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/FelipeSharkao/dia-util.git"
+    },
+    "main": "dist/cjs/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "devDependencies": {
+        "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+        "@types/bun": "latest",
+        "bun-plugin-dts": "^0.3.0",
+        "eslint": "^9.19.0",
+        "prettier": "^3.4.2"
+    },
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    },
+    "bugs": {
+        "url": "https://github.com/FelipeSharkao/dia-util/issues"
+    },
+    "contributors": [
+        "Luiz Freneda <lfreneda@gmail.com> (http://www.freneda.com.br/)",
+        "Victor Reinor <victorreinor@gmail.com>",
+        "Felipe Nascimento <felipenasgomes@gmail.com>"
+    ],
+    "description": "Hoje é um dia útil? Qual é o próximo dia útil? Pequena lógica para determinar o próximo (ou se hoje é) dia útil considerando fériados nacionais (móveis ou não).",
+    "homepage": "https://github.com/FelipeSharkao/dia-util#readme",
+    "keywords": [
+        "feriados",
+        "brasil",
+        "brazil",
+        "holidays",
+        "business",
+        "day",
+        "working-day",
+        "business-day",
+        "feriado",
+        "dia-útil"
+    ],
+    "license": "MIT",
+    "scripts": {
+        "build": "bun build.ts",
+        "dev": "bun test --watch",
+        "test": "bun test"
+    }
 }
